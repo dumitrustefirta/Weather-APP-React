@@ -1,38 +1,343 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.header {
+    width: 100%;
+    height: 10vh;
+    background-color: #36464C;
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 2;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+#logo-home {
+  text-decoration: none;
+  color: orange;
+  opacity: 0.8;
+  font-size: 24px;
+  padding: 0 1em;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+#date {
+    padding: 0 1em;
+    color: #ffffff;
+    opacity: 0.7;
+}
+
+.main {
+  width: 100%;
+  height: 90vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  text-align: center;
+  position: relative;
+
 }
 
-.App-link {
-  color: #61dafb;
+#image-placeholder {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+#select_city {
+  padding: .5em;
+  background-color: rgba(51, 51, 36, 0.8);
+  position: absolute;
+  top: 45px;
+  font-size: 1.2em;
+  color: #fff;
+  border-radius: 5px;
+}
+
+#select_box {
+  margin-top: 8px;
+  font-size: 18px;
+  border-radius: 15px;
+}
+
+/*** Weather data container on index page ***/
+
+.container {
+  width: 300px;    
+  height: auto;
+  padding: 5px;
+  background-color: rgba(255, 255, 255, 0.8);
+  margin: 0 auto;
+  border-radius: 10px;
+  position: absolute;
+  top: 160px;
+  color: #36464C;
+  font-size: 25px;
+
+}
+.location {
+  padding: 5px;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+  
+hr {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+} 
+
+.temperature-description, .humidity, 
+.wind-speed, .pressure {
+  font-size: .8em;
+}
+
+.temperature-value {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+.weather-icon {
+  width: 100%;
+  height: auto;
+}
+  
+.weather-icon img {
+  display: block;
+  margin: 0 auto;
+}
+
+
+.footer {
+  width: 100%;
+  height: 2em;
+  background-color: #36464C;
+  color: #eaeaea;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+}
+
+.footer img {
+  height: 1.5em;
+  width: auto;
+  margin: 4px 4px 0 0;
+}
+
+
+@media (min-width: 1024px) {
+  .container {
+    width: 350px;
+    top: 45px;
+    right: 60px;
   }
-  to {
-    transform: rotate(360deg);
+
+  #select_city {
+    left: 60px;
   }
+}
+
+/* /////****  some CSS for about page *****/
+
+/* .main__about {
+  background-color: #D8D9D5;
+  height: 90vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  p {
+    width: 400px;
+    text-align: justify;
+  }
+} */ 
+
+/* Navigation */
+
+@media (min-width: 1024px) {
+  .nav {
+    position: absolute;
+    right: 10px;
+  }
+  .menu-nav {
+    list-style-type: none;
+    overflow: hidden;
+    float: right; 
+
+  }
+  .menu-nav__item {
+    float: left;
+  }
+    
+  .menu-nav__link {
+      padding:0 45px;
+      color: #ffffff;
+      text-decoration: none;
+      opacity: 0.7; 
+      cursor: pointer;
+  }
+
+  .menu-nav__link .active {
+    border-bottom: 2px solid #ED7E5F;
+  }
+
+  .menu-nav__link:hover {
+        color:orange;
+  }
+  
+}
+
+@media (max-width: 1024px) {
+
+  .menu-btn {
+    position: absolute;
+    z-index: 1;
+    right: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    cursor: pointer;
+  }
+  
+  .menu-btn__burger {
+        width: 25px;
+        height: 2px;
+        background: #fff;
+        border-radius: 5px;
+        opacity: 0.9;
+    }
+
+    .menu-btn__burger:before,
+    .menu-btn__burger::after {
+        content: '';
+        position: absolute;
+        width: 25px;
+        height: 2px;
+        background: #fff;
+        border-radius: 5px;
+        opacity: 0.9;
+    }
+  
+    .menu-btn__burger:before {
+        transform: translateY(-8px);
+    }
+  
+    .menu-btn__burger::after {
+        transform: translateY(8px);
+    }
+
+    .menu-btn__burger.open {
+      transform: rotate(720deg);
+      background: transparent;
+    }
+
+    .menu-btn::before {
+      transform: rotate(45deg) translate(0px, 0px);
+    }
+
+    .menu-btn::after {
+      transform: rotate(-45deg) translate(0px, 0px);
+    }
+
+  .nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100vw;
+    visibility: hidden;
+  }
+
+  .nav .open {
+    visibility: visible;
+  }
+
+  .menu-nav {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    background-color: black;
+    opacity: 0.9;
+    list-style-type: none;
+    padding-right: 1rem;
+  }
+
+  .menu-nav__item {
+      color: #fff;
+    }  
+    
+  .menu-nav__link {
+    display: inline-block;
+    color: #fff;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 2rem 0;
+    font-size: 2rem;
+    font-weight: 300;
+  }
+        
+  .menu-nav:hover {
+    color: #ED7E5F;
+  }
+
+}
+
+/*    CityList Page   */
+
+.main__list {
+  background-image: url('./images/soft-cloudy.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: auto;
+  width: 100%; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+  
+.cities-list {
+    width: 85%;
+    height: auto;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 2em;
+}
+
+
+.cities-list__info {
+    width: 100%;
+    height: auto;
+    padding: 0 0.5em;
+    margin: 1em 0;
+    border: 1px solid #657c81;
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+}
+
+.cities-list__info:hover {
+  background-color: #ED7E5F;
+}
+
+
+/* img {
+    width: 40px;
+} */
+
+span.temp {
+    display: flex;
+    align-items: center;
+}
+
+span.second-info {
+    font-size: .7em;
+    font-weight: normal;
 }

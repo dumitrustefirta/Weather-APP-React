@@ -1,21 +1,21 @@
 import React from 'react';
 import { cities } from '../Data/citiesList';
-import { CityRow } from '../Components/CityRow'
+import { CityRow } from '../Components/CityRow';
 
 
 export function CitiesList(props) {
 
     const citiesKeys = Object.keys(cities);
-
     const getFilteredCities = () => {
         return citiesKeys.filter(city => {
-            if (city !== props.selectedCity) {
+            if(city !== props.selectedCity) {
                 return city
             }
         })
     }
 
     return (
+        <React.Fragment>
         <main className="main__list">
             <div className="cities-list">
                 {getFilteredCities().map(city => {
@@ -23,5 +23,6 @@ export function CitiesList(props) {
                 })}
             </div>
         </main>
+        </React.Fragment>
     )
 }

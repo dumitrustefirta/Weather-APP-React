@@ -180,7 +180,7 @@ hr {
       cursor: pointer;
   }
 
-  .menu-nav__link .active {
+  a.menu-nav__link.active {
     border-bottom: 2px solid #ED7E5F;
   }
 

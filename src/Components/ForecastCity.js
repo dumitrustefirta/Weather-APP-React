@@ -17,22 +17,21 @@ export function ForecastCity(props) {
                 return list;
             }, {})
         }).then(result => {
-            console.log(result);
             setData(result)
             setIsLoading(false)
         })
     }, [props.cityName])
 
-
     if (isLoading) {
         return (<p>Loading...</p>)
     }
     if (data) {
+        console.log(data)
         return (
             <div className='forecast-box__daily'>
                 <span>
                     {props.cityName}
-                    {/* {item.weather[0].description} */}
+                    {/* {data.main.weather[0].description} */}
                 </span>
                 {/* <span>{data.main.temp}&#x2103;</span> */}
                 {/* <span>{data.weather[0].description}</span> */}
@@ -40,4 +39,5 @@ export function ForecastCity(props) {
         )
     }
     return (<p>Sorry could not get data, please refresh page</p>)
+
 }

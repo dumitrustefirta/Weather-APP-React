@@ -1,7 +1,7 @@
 import React from 'react';
 import { CitySelector } from '../Components/citySelector';
 import { cities } from '../Data/citiesList';
-import { CityWeatherInfo } from './CityWeatherInfo copy'
+import { CityWeatherInfo } from './CityWeatherInfo'
 
 export function Main(props) {
     return (

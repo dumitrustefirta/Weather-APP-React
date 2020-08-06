@@ -7,6 +7,7 @@ export function ForecastCity(props) {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
+        // if (!props.selectedCity || !cities[props.selectedCity]) return
         getforecastCity(props.cityName).then((data) => {
             return data.list.reduce((list, item) => {
                 const dateKeys = new Date(item.dt_txt).getDate();
@@ -17,26 +18,32 @@ export function ForecastCity(props) {
                 return list;
             }, {})
         }).then(result => {
-            setData(result)
-            setIsLoading(false)
+            console.log(result)
+            setData(result);
+            setIsLoading(false);
         })
     }, [props.cityName])
 
+
     if (isLoading) {
-        return (<p>Loading...</p>)
+        return (<p>Loading...</p>);
     }
     if (data) {
-        console.log(data)
-        return (
-            <div className='forecast-box__daily'>
-                <span>
-                    {props.cityName}
-                    {/* {data.main.weather[0].description} */}
-                </span>
-                {/* <span>{data.main.temp}&#x2103;</span> */}
-                {/* <span>{data.weather[0].description}</span> */}
-            </div>
-        )
+        for(let day in data){
+            console.log(data[day])
+            data[day].map(item => {
+                const fixedTime = new Date(item.dt_txt).getHours();
+                if(fixedTime === 12) {
+                    return (
+                        <div className='forecast-box__daily'>
+                                {item.main.temp}
+                        </div>
+                    )
+
+                }
+
+            })
+        }
     }
     return (<p>Sorry could not get data, please refresh page</p>)
 

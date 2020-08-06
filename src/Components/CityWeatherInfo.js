@@ -7,7 +7,7 @@ export function CityWeatherInfo(props) {
     const [data, setData] = useState(null);
 
     useEffect(() => {
-        if(!props.selectedCity || !cities[props.selectedCity]) return
+        if (!props.selectedCity || !cities[props.selectedCity]) return
         getWeatherByCity(cities[props.selectedCity].name).then(data => setData(data))
 
     }, [props.selectedCity])
@@ -18,7 +18,7 @@ export function CityWeatherInfo(props) {
         return (
             <div className="container">
                 <div className="location">
-                    <p>-</p>
+                    {name}, {data.sys.country}
                     <hr />
                 </div>
                 <div className="weather-container">
@@ -30,15 +30,14 @@ export function CityWeatherInfo(props) {
                             )}
                     </div>
                     <div className="temperature-value">
-                        {name}: {main.temp} <span>&#x2103;</span>
+                        {Math.floor(main.temp)} <span>&#x2103;</span>
                     </div>
                     <div className="temperature-description">
-                        <em><p> - </p></em>
+                        <em>{data.weather[0].description}</em>
                     </div>
-                    <div className="humidity"></div>
-                    <div className="pressure"></div>
-                    <div className="wind-speed"></div>
-
+                    <div className="humidity">{`Humidity: ${data.main.humidity} %`}</div>
+                    <div className="pressure">{`Pressure: ${data.main.pressure} hPa`}</div>
+                    <div className="wind-speed">{`Wind speed: ${Math.floor(data.wind.speed)} m/s`}</div>
                 </div>
             </div>
         )

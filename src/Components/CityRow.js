@@ -10,8 +10,8 @@ export function CityRow(props) {
         getWeatherByCity(props.cityName).then((data) => {
             setData(data);
             setIsLoading(false)
-            })
-        .catch(err => setIsLoading(false));
+        })
+            .catch(err => setIsLoading(false));
 
     }, [props.cityName])
 
@@ -23,8 +23,14 @@ export function CityRow(props) {
         return (
             <div className='cities-list__info'>
                 {props.cityName}
-                <span>{data.main.temp}&#x2103;</span>
-                <span>{data.weather[0].description}</span>
+                <span className='temp'>
+                    <img src={`images/${data.weather[0].icon}.png`} alt='Weather Icon' />
+                    {Math.floor(data.main.temp)}&#x2103;</span>
+                <span className='second-info'>
+                    {`Humidity: ${data.main.humidity}%, `}
+                    {/* {`Pressure: ${data.main.pressure} hPa; `} */}
+                    {data.weather[0].description}
+                    </span>
             </div>
         )
 

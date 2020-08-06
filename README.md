@@ -1,2 +1,2 @@
 # Weather-APP-React
-[Site is live hear](https://react-weather-app-fe003.netlify.app)
+[Site is live here](https://react-weather-app-fe003.netlify.app)
